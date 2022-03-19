@@ -1,23 +1,27 @@
-import { nanoid } from '@reduxjs/toolkit';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Modal from './Modal';
+import { open } from './modalSlice';
 
 const List = () => {
-  const list = [
-    { title: '1', id: nanoid() },
-    { title: '2', id: nanoid() },
-    { title: '3', id: nanoid() },
-    { title: '4', id: nanoid() },
-    { title: '5', id: nanoid() },
-  ];
+  const dispatch = useDispatch();
+  const journals = useSelector((state) => state.journals);
+
+  const showModal = (e) => {
+    dispatch(open({ id: e.currentTarget.id }));
+  };
 
   return (
     <ul>
-      {list.map((item) => (
+      {journals.map((item) => (
         <li key={item.id}>
           <h3>{item.title}</h3>
-          <button>
-            <i>v</i>
-          </button>
+          <div>
+            <button id={item.id} onClick={showModal}>
+              <i>v</i>
+            </button>
+            <Modal id={item.id} />
+          </div>
         </li>
       ))}
     </ul>

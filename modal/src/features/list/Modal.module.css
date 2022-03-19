@@ -1,0 +1,20 @@
+.modal {
+  position: absolute;
+  top: 1rem;
+  right: 4rem;
+  width: 15rem;
+  height: 4rem;
+  background-color: white;
+  text-align: center;
+  z-index: 1;
+}
+
+p {
+  height: 2rem;
+  margin: 0;
+  line-height: 2rem;
+}
+
+p:hover {
+  background-color: cadetblue;
+}
